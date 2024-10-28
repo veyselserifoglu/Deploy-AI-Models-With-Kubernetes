@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  labels:
+    app: grafana
+spec:
+  type: NodePort  # Exposes Grafana externally
+  ports:
+    - port: 3000  # Port Grafana listens on
+      targetPort: 3000
+      nodePort: 32000  # External port to access Grafana (can be changed)
+  selector:
+    app: grafana

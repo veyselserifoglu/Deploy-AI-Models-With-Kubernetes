@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service
+spec:
+  type: NodePort  # Expose the service to the external network via a port on each Node
+  selector:
+    app: fastapi-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 30007  # Minikube will expose it on this port

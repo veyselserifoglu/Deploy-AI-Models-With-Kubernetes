@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app
+spec:
+  replicas: 2  # Number of instances
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+      - name: fastapi-app
+        image: deploy-ai-models-with-kubernetes-app:latest  # This should match your Docker image name
+        imagePullPolicy: Never  # Use the local image
+        ports:
+        - containerPort: 8000

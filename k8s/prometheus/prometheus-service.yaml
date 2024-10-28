@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+  labels:
+    app: prometheus
+spec:
+  type: NodePort  # This will expose Prometheus on a specific port
+  ports:
+    - port: 9090  # Prometheus listens on port 9090 by default
+      targetPort: 9090
+      nodePort: 30000  # You can access Prometheus on this NodePort
+  selector:
+    app: prometheus

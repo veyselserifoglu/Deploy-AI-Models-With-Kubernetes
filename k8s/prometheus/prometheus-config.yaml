@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  labels:
+    app: prometheus
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s  # Scrape targets every 5 seconds
+
+    scrape_configs:
+      - job_name: 'fastapi-app'
+        static_configs:
+          - targets: ['fastapi-service:8000']  # Replace with FastAPI service name and port
+        metrics_path: info/metrics  # Path to scrape metrics from FastAPI

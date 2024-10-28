@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  labels:
+    app: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: grafana/grafana:latest  # Grafana image from Docker Hub
+        ports:
+        - containerPort: 3000  # Grafana listens on port 3000 by default
+        volumeMounts:
+        - name: grafana-storage
+          mountPath: /var/lib/grafana  # Persistent storage for Grafana dashboards
+      volumes:
+      - name: grafana-storage
+        emptyDir: {}  # Use emptyDir for temporary storage (or change this to a persistent volume if needed)
