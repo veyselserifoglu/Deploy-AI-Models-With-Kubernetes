@@ -17,4 +17,4 @@ data:
 
       - job_name: 'node'
         static_configs:
-          - targets: ['prometheus-prometheus-node-exporter:9100', 'prometheus-kube-state-metrics:8080', 'kube-state-metrics:8080']
+          - targets: ['prometheus-prometheus-node-exporter:9100','prometheus-kube-state-metrics:8080','kube-state-metrics:8080']
