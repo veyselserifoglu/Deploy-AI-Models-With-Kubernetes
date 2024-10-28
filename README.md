@@ -1,10 +1,40 @@
 ### End-to-End AI Model Deployment and Monitoring in Kubernetes
 <!-- Tech used  -->
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![Kubernetes](https://img.shields.io/badge/Kubernetes-326ce5?style=flat-square&logo=kubernetes&logoColor=white) ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) 
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326ce5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Scope](#scope)
+- [Key Components](#key-components)
+- [Model Details](#model-details)
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+- [Prometheus to Scrape Application Metrics](#prometheus-to-scrape-application-metrics)
+- [Setting up Grafana to Visualize Prometheus Data](#setting-up-grafana-to-visualize-prometheus-data)
+- [Setting up Alerts](#setting-up-alerts)
 
 ## Project Overview
 
 This project provides a practical demonstration of deploying an AI model using Kubernetes and monitoring its performance in real-time with Prometheus and Grafana. The setup showcases containerized deployment, metric collection, and visualization, making it suitable for production-level insights and management.
+
+## Scope
+
+#### What Won't Be Covered
+This application assumes a foundational understanding of certain tools and concepts. Therefore, it will not cover:
+
+- **Basic Concepts of Kubernetes**: This guide won’t explain Kubernetes fundamentals such as pods, deployments, and services.
+- **Introduction to Docker**: Basic Docker concepts like containers, images, and volumes are assumed knowledge and will not be explained in detail.
+- **Setting Up Grafana Dashboards from Scratch**: We will focus on integrating Prometheus data into Grafana but won't cover creating dashboards from the ground up.
+- **Prometheus Fundamentals**: The basics of Prometheus, including metric types and querying, will not be the focus.
+- **FastAPI Basics**: This project uses FastAPI for the application layer but will not delve into FastAPI setup or syntax.
+
+This guide focuses primarily on deploying, monitoring, and visualizing application metrics rather than introducing these tools from scratch.
 
 ## Key Components
 - FastAPI: Serves the AI model for inference requests.
@@ -14,22 +44,9 @@ This project provides a practical demonstration of deploying an AI model using K
 - Grafana: Visualizes real-time metrics from Prometheus, enabling comprehensive monitoring of the AI model’s performance.
 
 
-## Model Information
+## Model Details
 
 The AI model used for this demonstration is [deit-base-distilled-patch16-224](https://huggingface.co/facebook/deit-base-distilled-patch16-224) by Meta, a distilled vision transformer model optimized for efficient image classification tasks.
-
-
-Mention what this outline won't provide. 
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Project Structure](#project-structure)
-- [Setup Instructions](#setup-instructions)
-- [Prometheus to Scrape Application Metrics](#prometheus-to-scrape-application-metrics)
-- [Setting up Grafana to Visualize Prometheus Data](#setting-up-grafana-to-visualize-prometheus-data)
-- [Setting up Alerts](#setting-up-alerts)
-
 
 ## Prerequisites
 - Docker
