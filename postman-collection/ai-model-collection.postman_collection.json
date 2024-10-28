@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "1ec223d9-0957-4e04-aae6-d68292fce65c",
+		"name": "ai-model-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15808325"
+	},
+	"item": [
+		{
+			"name": "predict-iumage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/dev/Pictures/Screenshots/cat.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/dev/Downloads/beautiful-cat-portrait-isolated/8623524.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/dev/Pictures/Screenshots/dog.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://192.168.49.2:30007/image/predict",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "30007",
+					"path": [
+						"image",
+						"predict"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get matrics",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/dev/Pictures/Screenshots/Screenshot from 2024-10-21 11-41-41.png"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/dev/Pictures/Screenshots/Screenshot from 2024-10-21 11-45-08.png",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://192.168.49.2:30007/info/metrics",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "30007",
+					"path": [
+						"info",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
