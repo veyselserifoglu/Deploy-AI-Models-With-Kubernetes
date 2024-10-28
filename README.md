@@ -20,10 +20,16 @@ The AI model used for this demonstration is [deit-base-distilled-patch16-224](ht
 
 
 Mention what this outline won't provide. 
-## Table
-- 
-- 
-- 
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+- [Prometheus to Scrape Application Metrics](#prometheus-to-scrape-application-metrics)
+- [Setting up Grafana to Visualize Prometheus Data](#setting-up-grafana-to-visualize-prometheus-data)
+- [Setting up Alerts](#setting-up-alerts)
+
 
 ## Prerequisites
 - Docker
@@ -188,6 +194,5 @@ We can create custom panels to display specific metrics, with regard to the Fast
 - API response time. 
 - File sizes. 
 - Average response time. 
-
 
 ## Setting up Alerts 
