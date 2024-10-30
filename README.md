@@ -18,6 +18,7 @@
 - [Prometheus to Scrape Application Metrics](#prometheus-to-scrape-application-metrics)
 - [Setting up Grafana to Visualize Prometheus Data](#setting-up-grafana-to-visualize-prometheus-data)
 - [Setting up Alerts for Prometheus](#setting-up-alerts-for-prometheus)
+- [Useful minikube And kubectl Commands I found Useful For The Setup](#useful-minikube-and-kubectl-commands-i-found-useful-for-the-setup)
 
 ## Project Overview
 
@@ -238,3 +239,82 @@ We created a ConfigMap for `alert-rules.yaml` and mounted it in the Prometheus c
 After setting up the rule, we confirmed it was loaded correctly by checking the Alerts section in the Prometheus UI. We also tested the alert by simulating a target going down, and verified that the alert fired as expected.
 
 ![prometheus_alert](/static/images/prometheus_alert.png)
+
+
+## Useful minikube And kubectl Commands I found Useful For The Setup
+
+#### minikube
+
+- **Start Minikube**  
+  ```bash
+  minikube start
+  ```
+  Initializes a local Kubernetes cluster in Minikube.
+
+- **Stop Minikube**  
+  ```bash
+  minikube stop
+  ```
+  Stops the Minikube cluster.
+
+- **Delete Minikube Cluster**  
+  ```bash
+  minikube delete
+  ```
+  Completely removes the Minikube cluster and its configurations.
+
+- **Expose a Service in Minikube**  
+  ```bash
+  minikube service <service-name>
+  ```
+  Provides a URL to access a service running in Minikube.
+
+- **Get a Service URL from Minikube**  
+  ```bash
+  minikube service <service-name> -n <namespace> --url
+  ```
+  Retrieves the direct URL to access a service in Minikube.
+
+#### kubectl
+
+- **Get List of Pods**  
+  ```bash
+  kubectl get pods -n <namespace>
+  ```
+  Displays all running pods in the specified namespace.
+
+- **Describe a Pod**  
+  ```bash
+  kubectl describe pod <pod-name> -n <namespace>
+  ```
+  Shows detailed information about a specific pod.
+
+- **Delete a Pod**  
+  ```bash
+  kubectl delete pod <pod-name> -n <namespace>
+  ```
+  Deletes a specific pod.
+
+- **Scale Application Replicas to 0**  
+  ```bash
+  kubectl scale deployment <deployment-name> --replicas=0 -n <namespace>
+  ```
+  Sets the specified deployment’s replicas to 0, effectively stopping all running instances.
+
+- **Apply Configuration File**  
+  ```bash
+  kubectl apply -f <file>.yaml
+  ```
+  Applies the specified YAML configuration file to create or update resources.
+
+- **View Logs for a Pod**  
+  ```bash
+  kubectl logs <pod-name> -n <namespace>
+  ```
+  Displays logs from a specific pod.
+
+- **Port Forward a Service**  
+  ```bash
+  kubectl port-forward svc/<service-name> <local-port>:<service-port> -n <namespace>
+  ```
+  Forwards a local port to a service port, useful for accessing services locally.
