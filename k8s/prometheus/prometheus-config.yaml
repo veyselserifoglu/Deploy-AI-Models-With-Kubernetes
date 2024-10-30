@@ -20,4 +20,4 @@ data:
           - targets: ['prometheus-prometheus-node-exporter:9100','prometheus-kube-state-metrics:8080','kube-state-metrics:8080']
     
     rule_files:
-      - 'etc/prometheus/alert-rules.yaml'
+      - '/etc/prometheus/alert-rules.yaml/alert-rules.yaml'

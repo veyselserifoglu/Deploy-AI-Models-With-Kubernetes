@@ -1,10 +1,18 @@
-groups:
-  - name: cpu_alerts
-    rules:
-    - alert: server_is_down
-      expr: up == 0
-      for: 1m
-      labels:
-        severity: page
-      annotations:
-        summary: "Server is down"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-alert-rules
+  labels:
+    app: prometheus
+data:
+  alert-rules.yaml: |
+    groups:
+      - name: cpu_alerts
+        rules:
+          - alert: server_is_down
+            expr: up == 0
+            for: 1m
+            labels:
+              severity: page
+            annotations:
+              summary: "Server is down"
