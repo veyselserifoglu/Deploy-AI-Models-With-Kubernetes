@@ -14,3 +14,10 @@ data:
         static_configs:
           - targets: ['fastapi-service:8000']  # Replace with FastAPI service name and port
         metrics_path: info/metrics  # Path to scrape metrics from FastAPI
+
+      - job_name: 'node'
+        static_configs:
+          - targets: ['prometheus-prometheus-node-exporter:9100','prometheus-kube-state-metrics:8080','kube-state-metrics:8080']
+    
+    rule_files:
+      - '/etc/prometheus/alert-rules.yaml/alert-rules.yaml'
