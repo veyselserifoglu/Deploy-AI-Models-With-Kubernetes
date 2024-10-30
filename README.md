@@ -17,7 +17,7 @@
 - [Setup Instructions](#setup-instructions)
 - [Prometheus to Scrape Application Metrics](#prometheus-to-scrape-application-metrics)
 - [Setting up Grafana to Visualize Prometheus Data](#setting-up-grafana-to-visualize-prometheus-data)
-- [Setting up Alerts](#setting-up-alerts)
+- [Setting up Alerts for Prometheus](#setting-up-alerts-for-prometheus)
 
 ## Project Overview
 
@@ -119,7 +119,7 @@ helm install prometheus prometheus-community/prometheus
 ```
 
 #### 2. Deploy Prometheus
-```bash
+```bash[alt text](<Screenshot from 2024-10-30 21-09-12.png>)
 kubectl apply -f k8s/prometheus/prometheus-deployment.yaml
 kubectl apply -f k8s/prometheus/prometheus-service.yaml
 kubectl apply -f k8s/prometheus/prometheus-config.yaml
@@ -212,4 +212,29 @@ We can create custom panels to display specific metrics, with regard to the Fast
 - File sizes. 
 - Average response time. 
 
-## Setting up Alerts 
+## Setting up Alerts for Prometheus
+we configured Prometheus to monitor application availability using an alert rule. The setup involved the following steps:
+
+#### 1. Creating the Alert Rule
+We defined an alert rule in alert-rules.yaml to detect when a target application goes down. The rule triggers an alert if the up metric is 0 for more than 1 minute, indicating that Prometheus cannot reach the target. Here’s the alert rule we used:
+
+```bash
+groups:
+  - name: cpu_alerts
+    rules:
+      - alert: server_is_down
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: page
+        annotations:
+          summary: "Server is down"
+```
+
+#### 2. Configuring Prometheus to Load the Alert Rule
+We created a ConfigMap for `alert-rules.yaml` and mounted it in the Prometheus container under `/etc/prometheus/alert-rules.yaml`. The Prometheus configuration (`prometheus.yml`) was updated to include this file in the `rule_files` section.
+
+#### 3. Verifying and Testing
+After setting up the rule, we confirmed it was loaded correctly by checking the Alerts section in the Prometheus UI. We also tested the alert by simulating a target going down, and verified that the alert fired as expected.
+
+![prometheus_alert](/static/images/prometheus_alert.png)
